@@ -4,7 +4,7 @@ import {GOOGLE_CLIENT_ID} from "../constants";
 import { login, logout } from "../store/actions/user";
 import { GoogleLogin } from "react-google-login";
 /* components */
-import Navigation from '../components/Navigation';
+import Navigation from '../components/navigation/Navigation';
 /* styles */
 import './base.css';
 

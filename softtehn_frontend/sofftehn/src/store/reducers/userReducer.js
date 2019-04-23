@@ -8,10 +8,11 @@ const userReducer = (state = initState, action) => {
         case USER_LOGIN:
             console.log("USER LOGIN====", action.userEmail);
             return {
-                ...state
+                user: action.userEmail,
             };
     
         case USER_LOGOUT:
+            console.log("USER LOGOUT===");
             return {
                 ...state
             };

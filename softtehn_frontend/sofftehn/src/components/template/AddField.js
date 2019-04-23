@@ -1,36 +1,34 @@
-import React, { Component } from 'react';
-import Field from './Field';
+import React, { PureComponent} from 'react';
 
-class AddField extends Component {
+class AddField extends PureComponent {
 
     state = {
-        type: null
+        name: null,
+        type: null,
+        active: 0,
+    };
+
+    inputName = (e) => {
+        const name = e.target.value;
+        this.props.updateFields(this.props.id, name, this.state.type);
+        this.setState({
+          name: e.target.value
+      })
     };
 
     inputType = (e) => {
+        const type = e.target.value;
+        this.props.updateFields(this.props.id, this.state.name, type);
         this.setState({
             type: e.target.value
         });
-    };
-
-    pickFieldType = () => {
-        switch (this.state.type) {
-            case 'STRING':
-                return <Field type={'text'} />;
-            case 'NUMBER':
-                return <Field type={'number'} />;
-            case 'DATE':
-                return <Field type={'date'} />
-            default:
-                return null;
-        }
     };
 
     render() {
         return (
         <div className="row">
             <div className="input-field col s4">
-                <input id="fieldName" name="fieldName" type="text" className="validate" />
+                <input id="fieldName" name="fieldName" type="text" className="validate" onChange={this.inputName} />
                 <label htmlFor="fieldName">Field name</label>
             </div>
             <div className="input-field col s4">
@@ -41,7 +39,6 @@ class AddField extends Component {
                     <option value="DATE">Date</option>
                 </select>
             </div>
-            { this.state.type ? this.pickFieldType() : null }
         </div>
         )
     }

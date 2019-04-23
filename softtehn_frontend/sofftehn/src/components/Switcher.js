@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Template from '../components/Template';
+import Template from './template/Template';
 import BaseLayout from '../layouts/base';
 const Switcher = () => {
     return (

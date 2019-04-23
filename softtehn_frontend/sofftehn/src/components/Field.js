@@ -6,6 +6,6 @@ const Field = ({ type }) => {
         <input placeholder="Field value" id="fieldValue" name="fieldValue" type={type} className="validate" />
       </div>
     )
-}
+};
 
 export default Field

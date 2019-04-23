@@ -1,0 +1,22 @@
+.button {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dropdown {
+    display: inline-grid;
+}
+.dropdown-content {
+    display: none;
+    vertical-align: auto;
+}
+.dropdown:hover .dropdown-content {
+    display: inherit;
+    position: unset;
+    opacity: unset;
+}
+
+.button-md{
+    margin-left: 20px;
+    margin-top: 1px;
+}

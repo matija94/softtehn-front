@@ -1,11 +1,12 @@
-import { TEMPLATE_CREATE } from "../actionTypes";
+import { ActionTypes } from "../actions/template";
 
 const initState = {};
 
 const templateReducer = (state = initState, action) => {
 
     switch (action.type) {
-        case TEMPLATE_CREATE:
+        case ActionTypes.CREATE_TEMPLATE:
+            console.log("CREATED TEMPLATE");
             return {
               ...state  
             };
@@ -14,6 +15,6 @@ const templateReducer = (state = initState, action) => {
             return state;
     }
 
-}
+};
 
 export default templateReducer;
