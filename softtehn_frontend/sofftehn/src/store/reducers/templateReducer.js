@@ -6,11 +6,14 @@ const templateReducer = (state = initState, action) => {
 
     switch (action.type) {
         case ActionTypes.CREATE_TEMPLATE:
-            console.log("CREATED_TEMPLATE====", action);
             return {
               ...state  
             };
-    
+        case ActionTypes.SET_TEMPLATES:
+            console.log("SET TEMPLATES====", action);
+            return {
+              templates: action.templates,
+            };
         default:
             return state;
     }

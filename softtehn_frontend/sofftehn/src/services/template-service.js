@@ -4,12 +4,20 @@ const resourceUrl = 'template';
 
 class TemplateService{
 
-    getTemplateById(templateId) {
-        return  ApiHelper.get(`${resourceUrl}/${templateId}`)
+    getTemplateByName(templateName) {
+        return  ApiHelper.get(`${resourceUrl}/${templateName}`)
             .then(response => response.data)
             .catch((e) => {
                 throw e
             });
+    }
+
+    getTemplates() {
+        return ApiHelper.get(`${resourceUrl}`)
+            .then(response => response.data)
+            .catch((e) => {
+                throw e
+            })
     }
 
     saveTemplate(params) {

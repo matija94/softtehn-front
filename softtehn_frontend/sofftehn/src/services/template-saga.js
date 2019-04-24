@@ -13,9 +13,29 @@ function* saveTemplate(action) {
     } catch (e) {
         console.log("REQUEST FAILED");
     }
+}
+
+function* getTemplates(action) {
+    try {
+        const templates = yield TemplateService.getTemplates();
+        yield put({type: ActionTypes.SET_TEMPLATES, templates});
+    } catch (e) {
+        console.log("REQUEST FAILED");
+    }
+}
+
+function* getTemplateByName(action) {
+    try {
+        const template = yield TemplateService.getTemplateByName(action.templateName);
+        yield put({type: ActionTypes.SET_TEMPLATES, templates: template});
+    } catch (e) {
+        console.log("REQUEST FAILED");
+    }
 
 }
 
 export default function* templateSaga() {
     yield takeEvery(ActionTypes.SAVE_TEMPLATE, saveTemplate);
+    yield takeEvery(ActionTypes.GET_TEMPLATES, getTemplates);
+    yield takeEvery(ActionTypes.GET_TEMPLATE_BY_NAME, getTemplateByName);
 }

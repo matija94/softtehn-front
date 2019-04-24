@@ -17,6 +17,9 @@ const Navigation = (props) => {
                         <NavLink to="/template">Template</NavLink>
                     </li>
                     <li>
+                        <NavLink to="/templateList">Template List</NavLink>
+                    </li>
+                    <li>
                         <div className="dropdown">
                             <button className="button button-lg hover-extend">
                                 <i className="fa fa-user" /> {props.user}
