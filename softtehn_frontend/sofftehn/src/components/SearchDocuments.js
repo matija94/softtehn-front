@@ -6,13 +6,13 @@ class SearchDocuments extends Component {
 
     state = {
         searchDoc: null
-    }
+    };
 
     handleChng = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         });
-    }
+    };
 
     render() {
         return (
@@ -29,6 +29,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loadDocuments: (name) => dispatch(findDocumentsByTemplateName(name))
     }
-}
+};
 
 export default connect(null, mapDispatchToProps)(SearchDocuments)

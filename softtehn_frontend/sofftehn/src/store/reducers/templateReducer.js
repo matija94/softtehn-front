@@ -6,7 +6,7 @@ const templateReducer = (state = initState, action) => {
 
     switch (action.type) {
         case ActionTypes.CREATE_TEMPLATE:
-            console.log("CREATED TEMPLATE");
+            console.log("CREATED_TEMPLATE====", action);
             return {
               ...state  
             };

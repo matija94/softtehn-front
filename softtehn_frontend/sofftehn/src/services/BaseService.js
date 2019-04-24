@@ -4,10 +4,11 @@ import {ACCESS_TOKEN, TOKEN_EXPIRES_AT} from "../constants";
 class BaseService {
 
     verifyUser(token, userEmail) {
-        const data = {token: token.id_token, userEmail: userEmail};
-        return ApiHelper.post("api/auth/login", data)
+        const data = {token: token.id_token, email: userEmail};
+        return ApiHelper.post("login", data)
             .then(response => {
                 const data = response.data;
+                console.log(data);
                 localStorage.setItem(ACCESS_TOKEN, token.id_token);
                 localStorage.setItem(TOKEN_EXPIRES_AT, token.expires_at.toString());
                 return data;
@@ -16,7 +17,7 @@ class BaseService {
 
     logoutUser() {
         const data = {token: localStorage.getItem(ACCESS_TOKEN)};
-        return ApiHelper.post("api/auth/logout", data)
+        return ApiHelper.post("logout", data)
             .then(response => {
                 localStorage.removeItem(ACCESS_TOKEN);
                 localStorage.removeItem(TOKEN_EXPIRES_AT);

@@ -10,7 +10,8 @@ import { Provider } from 'react-redux';
 import rootReducer from './store/reducers/rootReducer';
 import history from './components/history';
 
-import templateSaga from './components/template/template-saga';
+import templateSaga from './services/template-saga';
+import authSaga from './services/auth-saga'
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,6 +20,7 @@ const middleware = applyMiddleware(sagaMiddleware);
 const store = createStore(rootReducer, {}, middleware);
 
 sagaMiddleware.run(templateSaga);
+sagaMiddleware.run(authSaga);
 
 ReactDOM.render(
     <Provider store={store}>

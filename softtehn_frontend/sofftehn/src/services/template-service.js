@@ -1,6 +1,6 @@
 import ApiHelper from './api-helper';
 
-const resourceUrl = 'api/template';
+const resourceUrl = 'template';
 
 class TemplateService{
 
@@ -13,7 +13,6 @@ class TemplateService{
     }
 
     saveTemplate(params) {
-        return {};
         return ApiHelper.post(`${resourceUrl}/`, params)
             .then(response => response.data)
             .catch((e) => {

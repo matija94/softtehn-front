@@ -1,20 +1,18 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actionTypes";
+import { ActionTypes } from "../actions/user";
 
 const initState = {};
 
 const userReducer = (state = initState, action) => {
-
+    console.log("ACTION===", action);
     switch (action.type) {
-        case USER_LOGIN:
-            console.log("USER LOGIN====", action.userEmail);
+        case ActionTypes.USER_LOGGED_IN:
             return {
-                user: action.userEmail,
+                user: action.user,
             };
     
-        case USER_LOGOUT:
-            console.log("USER LOGOUT===");
+        case ActionTypes.USER_LOGGED_OUT:
             return {
-                ...state
+                user: null,
             };
 
         default:

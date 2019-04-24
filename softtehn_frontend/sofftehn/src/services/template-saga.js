@@ -1,9 +1,9 @@
 import { put, takeEvery } from 'redux-saga/effects';
 
-import { ActionTypes } from '../../store/actions/template';
-import TemplateService from '../../services/template-service';
+import { ActionTypes } from '../store/actions/template';
+import TemplateService from './template-service';
 
-import history from '../history';
+import history from '../components/history';
 
 function* saveTemplate(action) {
     try {

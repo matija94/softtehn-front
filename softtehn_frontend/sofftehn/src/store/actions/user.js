@@ -1,11 +1,16 @@
-import {USER_LOGIN, USER_LOGOUT} from '../actionTypes';
+export const ActionTypes = {
+    USER_LOGIN: 'USER_LOGIN',
+    USER_LOGOUT: 'USER_LOGOUT',
+    USER_LOGGED_IN: 'USER_LOGGED_IN',
+    USER_LOGGED_OUT: 'USER_LOGGED_OUT'
+};
 
 export const login = (token, userEmail) => ({
-    type: USER_LOGIN,
+    type: ActionTypes.USER_LOGIN,
     token,
     userEmail,
 });
 
 export const logout = () => ({
-    type: USER_LOGOUT,
+    type: ActionTypes.USER_LOGOUT,
 });
