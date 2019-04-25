@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Template from './template/Template';
 import BaseLayout from '../layouts/base';
 import TemplateList from "./TemplateList";
-import CreateDocument from "./CreateDocument";
+import CreateDocument from "./CreateDocument/CreateDocument";
 
 const Switcher = () => {
     return (
@@ -11,7 +11,7 @@ const Switcher = () => {
             <Switch>
                 <Route exact path="/template" component={Template} />
                 <Route exact path="/templateList" component={TemplateList} />
-                <Route exact path="/document/:templateName/new" comonent={CreateDocument} />
+                <Route path="/document/:templateName/new" component={CreateDocument} />
             </Switch>
         </BaseLayout>
     )

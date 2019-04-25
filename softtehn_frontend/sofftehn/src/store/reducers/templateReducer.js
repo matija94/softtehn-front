@@ -10,7 +10,6 @@ const templateReducer = (state = initState, action) => {
               ...state  
             };
         case ActionTypes.SET_TEMPLATES:
-            console.log("SET TEMPLATES====", action);
             return {
               templates: action.templates,
             };
