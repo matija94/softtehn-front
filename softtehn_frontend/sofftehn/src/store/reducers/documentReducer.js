@@ -9,6 +9,10 @@ const documentReducer = (state = initState, action) => {
             return {
                 template: action.templates,
             };
+        case ActionTypes.SET_DOCUMENTS:
+            return {
+                documents: action.documents,
+            };
         default:
             return state;
     }

@@ -38,7 +38,6 @@ class Template extends PureComponent {
     else {
       this.state.templateFields[key] = field;
     }
-    console.log("FIELDS===", this.state);
   }
 
   renderAddFields() {

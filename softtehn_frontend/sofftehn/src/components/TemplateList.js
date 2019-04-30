@@ -14,6 +14,10 @@ class TemplateList extends React.PureComponent {
         history.push(`/document/${templateName}/new`);
     }
 
+    listDocuments(templateName) {
+        history.push(`/document/${templateName}/list`)
+    }
+
     render() {
         const templateRows =
           this.props.templates ?
@@ -23,6 +27,8 @@ class TemplateList extends React.PureComponent {
                         <td>{template.name}</td>
                         <td><button className="btn btn-primary"
                                     onClick={() => this.createDocument(template.name)}>Create</button></td>
+                        <td><button className={"btn btn-primary"}
+                                    onClick={() => this.listDocuments(template.name)}>List</button></td>
                       </tr>
                   )
               }) : null;
@@ -36,6 +42,7 @@ class TemplateList extends React.PureComponent {
                         <tr>
                             <th>Name</th>
                             <th>Create Document</th>
+                            <th>List Document</th>
                         </tr>
                     </thead>
                     <tbody>

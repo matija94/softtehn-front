@@ -12,6 +12,7 @@ import history from './components/history';
 
 import templateSaga from './services/template-saga';
 import authSaga from './services/auth-saga'
+import documentSaga from './services/document-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,6 +22,7 @@ const store = createStore(rootReducer, {}, middleware);
 
 sagaMiddleware.run(templateSaga);
 sagaMiddleware.run(authSaga);
+sagaMiddleware.run(documentSaga);
 
 ReactDOM.render(
     <Provider store={store}>
