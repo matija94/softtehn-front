@@ -23,7 +23,27 @@ function* getDocuments(action) {
     }
 }
 
+function* uploadDocument(action) {
+    try {
+        yield DocumentService.uploadDocument(action.params);
+    } catch (e) {
+        console.log("REQUEST FAILED");
+    }
+}
+
+function* downloadDocumentFile(action) {
+    try {
+        const data = yield DocumentService.getDocumentFile(action.documentId);
+        yield put({type: DocumentActionTypes.VIEW_DOCUMENT_FILE, data: data});
+        history.push(`/document/${action.documentId}/file`);
+    }catch (e) {
+        console.log("REQUEST FAILED");
+    }
+}
+
 export default function* templateSaga() {
     yield takeEvery(DocumentActionTypes.SAVE_DOCUMENT, saveDocument);
     yield takeEvery(DocumentActionTypes.GET_DOCUMENTS, getDocuments);
+    yield takeEvery(DocumentActionTypes.UPLOAD_DOCUMENT, uploadDocument);
+    yield takeEvery(DocumentActionTypes.DOWNLOAD_DOCUMENT_FILE, downloadDocumentFile);
 }

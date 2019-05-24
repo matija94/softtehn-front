@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { getDocuments } from "../store/actions/document";
+import { getDocuments, downloadDocumentFile } from "../store/actions/document";
 
 class DocumentList extends Component {
 
@@ -9,6 +9,12 @@ class DocumentList extends Component {
         this.props.getDocuments(params.templateName);
     }
 
+    downloadDocumentFile(documentId) {
+        this.props.downloadDocumentFile(documentId);
+    }
+
+
+
     render() {
         const docRows =
             this.props.documents ?
@@ -16,7 +22,8 @@ class DocumentList extends Component {
                     return (
                         <tr key={doc.templateName}>
                             <td>{doc.templateName}</td>
-                            <td><button className="btn btn-primary">View</button></td>
+                            <td><button className="btn btn-primary"
+                                        onClick={() => this.downloadDocumentFile(doc.documentId)}>View</button></td>
                         </tr>
                     )
                 }) : null;
@@ -44,10 +51,12 @@ class DocumentList extends Component {
 
 const mapStateToProps = state => ({
     documents: state.document.documents,
+    data: state.document.data,
 });
 
 const mapDispatchToProps = dispatch => ({
-    getDocuments: templateName => dispatch(getDocuments(templateName))
+    getDocuments: templateName => dispatch(getDocuments(templateName)),
+    downloadDocumentFile: documentId => dispatch(downloadDocumentFile(documentId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentList);

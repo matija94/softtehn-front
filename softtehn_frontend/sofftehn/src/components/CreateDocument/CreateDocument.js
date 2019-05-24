@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTemplateByName } from "../../store/actions/template";
-import { saveDocument } from "../../store/actions/document";
+import { saveDocument, uploadDocument } from "../../store/actions/document";
 import Field from "./Field";
 
 class CreateDocument extends React.PureComponent {
@@ -10,9 +10,12 @@ class CreateDocument extends React.PureComponent {
         super(props);
         this.updateField = this.updateField.bind(this);
         this.saveDocument = this.saveDocument.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    state = {};
+    state = {
+        file: null,
+    };
 
     componentDidMount() {
         const { match: { params } } = this.props;
@@ -32,7 +35,14 @@ class CreateDocument extends React.PureComponent {
     }
 
     saveDocument() {
+        console.log("CREATE DOC STATE===", this.state);
+        this.props.uploadDocument(this.state);
         this.props.saveDocument(this.state);
+    }
+
+
+    onChange(e) {
+        this.setState({file:e.target.files[0], fileName:e.target.files[0].name})
     }
 
     renderDocumentForm() {
@@ -54,6 +64,7 @@ class CreateDocument extends React.PureComponent {
             <div className="container">
                 <h3>Create Document</h3>
                 <div>{this.renderDocumentForm()}</div>
+                <input type="file" onChange={this.onChange} />
                 <button id={"saveDocument"} className="btn waves-effect waves-light"
                         onClick={this.saveDocument} type="button">
                     Save document
@@ -70,6 +81,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getTemplateByName: templateName => dispatch(getTemplateByName(templateName)),
     saveDocument: params => dispatch(saveDocument(params)),
+    uploadDocument: params => dispatch(uploadDocument(params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateDocument);

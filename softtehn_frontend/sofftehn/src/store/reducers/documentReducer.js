@@ -13,6 +13,10 @@ const documentReducer = (state = initState, action) => {
             return {
                 documents: action.documents,
             };
+        case ActionTypes.VIEW_DOCUMENT_FILE:
+            return {
+              data: action.data
+            };
         default:
             return state;
     }
