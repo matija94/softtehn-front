@@ -28,6 +28,7 @@ function* getTemplates(action) {
 function* getTemplateByName(action) {
     try {
         const template = yield TemplateService.getTemplateByName(action.templateName);
+        console.log("TEMPLATE===", template);
         yield put({type: DocumentActionTypes.SET_TEMPLATE, templates: template});
     } catch (e) {
         console.log("REQUEST FAILED");

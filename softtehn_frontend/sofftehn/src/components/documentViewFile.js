@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class DocumentViewFile extends Component {
 
     showPDF(pdf) {
+        console.log("PDF DATA===", pdf);
         const file = new Blob(
             [pdf],
             {type: 'application/pdf'});
