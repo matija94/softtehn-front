@@ -35,7 +35,7 @@ class DocumentService {
     }
 
     getDocumentFile(documentId) {
-        return ApiHelper.get(`${resourceUrl}/${documentId}/file`, {responseType: 'arraybuffer'})
+        return ApiHelper.get(`${resourceUrl}/${documentId}/file`)
             .then(response => response.data)
             .catch((e) => {
                 console.log(e);

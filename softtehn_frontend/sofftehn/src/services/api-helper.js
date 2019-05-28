@@ -12,7 +12,7 @@ const getAccessToken = () => {
     return localStorage.getItem(ACCESS_TOKEN);
 };
 
-const getHeaders = () => Object.assign({}, initialHeaders, {
+export const getHeaders = () => Object.assign({}, initialHeaders, {
     Authorization: `Bearer ${getAccessToken()}`
 });
 

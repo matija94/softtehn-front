@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getDocuments, downloadDocumentFile } from "../store/actions/document";
+import {getHeaders} from "../services/api-helper";
+import apiConfig from './api-configuration';
 
 class DocumentList extends Component {
 
@@ -9,11 +11,17 @@ class DocumentList extends Component {
         this.props.getDocuments(params.templateName);
     }
 
-    downloadDocumentFile(documentId) {
-        this.props.downloadDocumentFile(documentId);
+    downloadPDF(documentId) {
+        fetch(`${apiConfig.baseUrl}/document/${documentId}/file`, {
+            headers: getHeaders(),
+        })
+            .then(response => {
+                response.blob().then(blob => {
+                    let url = window.URL.createObjectURL(blob);
+                    window.open(url);
+                });
+            });
     }
-
-
 
     render() {
         const docRows =
@@ -23,7 +31,7 @@ class DocumentList extends Component {
                         <tr key={doc.templateName}>
                             <td>{doc.templateName}</td>
                             <td><button className="btn btn-primary"
-                                        onClick={() => this.downloadDocumentFile(doc.documentId)}>View</button></td>
+                                        onClick={() => this.downloadPDF(doc.documentId)}>View</button></td>
                         </tr>
                     )
                 }) : null;
