@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getDocuments, downloadDocumentFile } from "../store/actions/document";
 import {getHeaders} from "../services/api-helper";
-import apiConfig from './api-configuration';
+import apiConfig from '../services/api-configuration';
 
 class DocumentList extends Component {
 
